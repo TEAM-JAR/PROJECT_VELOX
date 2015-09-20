@@ -1,5 +1,6 @@
 package com.example.microwave.project_velox;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
@@ -58,7 +59,14 @@ public class MenuActivity extends Activity {
         initializeInstanceVars();
         linkWithUI();
         initializeHandler();
+    }
 
+    public void adventureClicked(View view) {
+        Intent activityChangeIntent = new Intent(MenuActivity.this, BattleActivity.class);
+
+        // currentContext.startActivity(activityChangeIntent);
+
+        startActivity(activityChangeIntent);
     }
 
     private void linkWithUI() {
@@ -73,7 +81,7 @@ public class MenuActivity extends Activity {
     }
 
     private void initializeInstanceVars() {
-        pm = new Pedometer(getApplicationContext());
+        pm = ((MyApplication) this.getApplication()).getPedometer();
         pm.resume();
 
         this.pacesCounter = 0;

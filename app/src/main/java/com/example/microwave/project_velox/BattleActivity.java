@@ -1,5 +1,6 @@
 package com.example.microwave.project_velox;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,8 +12,15 @@ public class BattleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
-        Dungeon first = new Dungeon(1,1,new Hero(1));
+        Dungeon first = new Dungeon(1,1,((MyApplication) this.getApplication()).getHero(),
+                ((MyApplication) this.getApplication()).getPedometer(),((MyApplication) this.getApplication()).getVU());
         first.start();
+
+        Intent activityChangeIntent = new Intent(BattleActivity.this, MenuActivity.class);
+
+        // currentContext.startActivity(activityChangeIntent);
+
+        startActivity(activityChangeIntent);
     }
 
 

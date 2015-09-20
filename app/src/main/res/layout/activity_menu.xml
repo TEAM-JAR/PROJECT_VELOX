@@ -138,19 +138,12 @@
         </FrameLayout>
 
         <Button
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:text="level up"
-            android:onClick="lvluphit"
-            android:id="@+id/lvlbutton" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="rank up"
-            android:onClick="rkuphit"
-            android:id="@+id/rbutton"
-            android:layout_gravity="right" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Adventure!"
+            android:onClick="adventureClicked"
+            android:id="@+id/Dungeon_B"
+            android:textSize="51dp" />
 
     </LinearLayout>
 
