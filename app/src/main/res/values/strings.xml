@@ -14,4 +14,10 @@
              android.hardware.sensor.stepdetector
        </string>
 
+    <string name="title_activity_activity_menu">activity_menu</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_menu">MenuActivity</string>
+
 </resources>
