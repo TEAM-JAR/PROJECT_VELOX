@@ -48,7 +48,7 @@ public class Hero extends Character{
 //		topSpeed=phone.getVelocity();
 //	}
 
-	public void askName(){
+	public void spawn(){
 
 	}
 
@@ -102,6 +102,7 @@ public class Hero extends Character{
 	public int getReqRankExp(){
 		return (int) Math.pow(rank, 1.1)*10;
 	}
+
 
 	public int totalHp(){
 		return itemsHp()+getMaxHp();

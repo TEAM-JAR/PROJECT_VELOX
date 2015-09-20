@@ -22,7 +22,14 @@ public class Enemy extends Character{
 			this.attack(hero);
 		}
 	}
-	
+
+	public boolean dies(){
+		if(this.currHp<=0){
+			return true;
+		}
+		else return false;
+	}
+
 	public int getDifficulty(){
 		return this.difficulty;
 	}

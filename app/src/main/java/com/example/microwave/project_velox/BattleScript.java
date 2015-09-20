@@ -10,7 +10,7 @@ public class BattleScript {
 		}
 		
 		while(battle.isOccuring()==0){
-			Enemy selectedEnemy=new Enemy(0);
+
 			if(buttonFight.isPressed()){
 				double velocity=0;
 				
@@ -24,9 +24,8 @@ public class BattleScript {
 				}
 
 				if (velocity>7){
-					//prompt user to select enemy
-					selectedEnemy= ;
-					battle.getHero().attack(selectedEnemy);
+					//Later integrate user selection of enemy
+					battle.getHero().attack(battle.getEnemy((int)( Math.random()*3)+ 1));
 				}
 			}
 			else if(buttonMagic.isPressed()){
@@ -46,9 +45,8 @@ public class BattleScript {
 				int stepsTaken=p.getSensorCount()-stepAt;
 
 				if(velocity>4 && stepsTaken==1){
-					//prompt user to select enemy
-					selectedEnemy= ;
-					battle.getHero().magic(selectedEnemy);
+					//Later integrate user selection of enemy
+					battle.getHero().attack(battle.getEnemy((int) (Math.random() * 3 )+ 1));
 				}
 			}
 			else if(buttonDefend.isPressed()){
@@ -87,6 +85,12 @@ public class BattleScript {
 				
 				if(velocity<.1 && stepsTaken>0){
 					battle.getHero().heal(battle.getHero().getCurrRcv());
+				}
+			}
+
+			for(int i=1;i<battle.getEnemies().length;i++){
+				if(battle.getEnemy(i).dies()){
+					
 				}
 			}
 
