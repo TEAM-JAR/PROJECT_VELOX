@@ -1,5 +1,4 @@
 package com.example.microwave.project_velox;
-
 public class Hero extends Character{
 	
 	private int level;

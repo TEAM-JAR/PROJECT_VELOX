@@ -1,5 +1,4 @@
 package com.example.microwave.project_velox;
-
 public class StartDungeon {
 
 	public static void main(String[] args) {
