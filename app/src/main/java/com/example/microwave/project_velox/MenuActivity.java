@@ -9,6 +9,8 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        setTitle("PROJECT: VELOX");
+        getActionBar().setIcon(R.drawable.boot);
     }
 
 }

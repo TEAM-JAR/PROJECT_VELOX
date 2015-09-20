@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
     private Button reset;
 
     private Handler updateHandler;
-    private Runnable updateRunnable;
 
     public static final double TIMER_UPDATE_RATE = 0.5;
     public static final double MILLISECONDS_TO_SECONDS = 1000;
