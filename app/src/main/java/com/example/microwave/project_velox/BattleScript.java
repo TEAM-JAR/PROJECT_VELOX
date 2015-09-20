@@ -8,8 +8,9 @@ public class BattleScript {
 	
 	boolean result;
 	BattleAction battleAction;
+	ProgressBar pb;
 	
-	public BattleScript(int difficulty, int numOfEnemies, Hero hero,Pedometer p,VelocityUpdater v) {
+	public BattleScript(int difficulty, int numOfEnemies, Hero hero,Pedometer p,VelocityUpdater v, ProgressBar pb) {
 		Battle battle=new Battle(numOfEnemies,hero);
 		battleAction = BattleAction.STANDBY;
 
@@ -30,6 +31,7 @@ public class BattleScript {
 				while (System.currentTimeMillis() < end)
 				{
 					int diff = (int) (end - start);
+					updateActionBar((diff / 3000) * 100);
 
 					if(v.getVelocity()>velocity){
 						velocity=v.getVelocity();
@@ -56,6 +58,9 @@ public class BattleScript {
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
 				while (System.currentTimeMillis() < end)
 				{
+					int diff = (int) (end - start);
+					updateActionBar((diff / 3000) * 100);
+
 					if(v.getVelocity()>velocity){
 						velocity=v.getVelocity();
 					}
@@ -82,6 +87,9 @@ public class BattleScript {
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
 				while (System.currentTimeMillis() < end)
 				{
+					int diff = (int) (end - start);
+					updateActionBar((diff / 3000) * 100);
+
 					if(v.getVelocity()>velocity){
 						velocity=v.getVelocity();
 					}
@@ -107,6 +115,9 @@ public class BattleScript {
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
 				while (System.currentTimeMillis() < end)
 				{
+					int diff = (int) (end - start);
+					updateActionBar((diff / 3000) * 100);
+
 					if(v.getVelocity()>velocity){
 						velocity=v.getVelocity();
 					}
@@ -151,31 +162,18 @@ public class BattleScript {
 		}
 	}
 
-	public void setActionBar(double current, double total) {
-		//ProgressBar actionBar = find
-	}
-
-	public void attackClicked(View view) {
-		battleAction = BattleAction.ATTACK;
-	}
-
-	public void defendClicked(View view) {
-		battleAction = BattleAction.DEFEND;
-	}
-
-	public void magicClicked(View view) {
-		battleAction = BattleAction.MAGIC;
-	}
-
-	public void healClicked(View view) {
-		battleAction = BattleAction.HEAL;
-	}
-
 	public void resetBattleAction() {
+		pb.setProgress(0);
 		battleAction = BattleAction.STANDBY;
 	}
 
-	public void setBattleAction()
+	public void setBattleAction(BattleAction ba) {
+		battleAction = ba;
+	}
+
+	public void updateActionBar(int fill) {
+		pb.setProgress(fill);
+	}
 
 	public boolean getResult(){
 		return this.result;

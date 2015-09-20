@@ -1,4 +1,7 @@
 package com.example.microwave.project_velox;
+
+import android.widget.ProgressBar;
+
 public class Dungeon {
 	private int numStages;
 	private int currStage;
@@ -6,10 +9,11 @@ public class Dungeon {
 	private Hero hero;
 	private Pedometer p;
 	private VelocityUpdater vu;
+	private ProgressBar pb;
 	
-	private BattleScript newBattle;
+	public BattleScript newBattle;
 
-	public Dungeon(int difficulty, int numStages, Hero hero, Pedometer p, VelocityUpdater vu){
+	public Dungeon(int difficulty, int numStages, Hero hero, Pedometer p, VelocityUpdater vu, ProgressBar pb){
 		this.difficulty=difficulty;
 		this.numStages=numStages;
 		this.hero=hero;
@@ -28,7 +32,7 @@ public class Dungeon {
 
 	public void start(){
 		currStage=1;
-		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu);
+		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu, pb);
 	}
 
 	public void next(){
@@ -43,7 +47,7 @@ public class Dungeon {
 	public void advance(){
 		if(canAdvance()){
 			currStage=currStage+1;
-			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu);
+			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu, pb);
 		}
 		else{
 			
