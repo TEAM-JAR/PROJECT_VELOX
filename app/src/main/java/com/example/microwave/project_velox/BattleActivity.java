@@ -11,11 +11,11 @@ public class BattleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
+        Dungeon first = new Dungeon(1,1,new Hero(1));
+        first.start();
     }
 
-    public Dungeon(){
 
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

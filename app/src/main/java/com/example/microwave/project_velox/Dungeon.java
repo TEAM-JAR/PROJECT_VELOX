@@ -5,7 +5,7 @@ public class Dungeon {
 	private int difficulty;
 	private Hero hero;
 	
-	BattleScript newBattle= new BattleScript(0,0,new Hero(1));
+	BattleScript newBattle= new BattleScript(0,0,new Hero(1),getGlobalPedometer, getGlobalVelocityUpdater);
 
 	public Dungeon(int difficulty, int numStages, Hero hero){
 		this.difficulty=difficulty;
@@ -23,7 +23,7 @@ public class Dungeon {
 
 	public void start(){
 		currStage=1;
-		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero);
+		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,getGlobalPedometer, getGlobalVelocityUpdater);
 	}
 
 	public void next(){
@@ -38,7 +38,7 @@ public class Dungeon {
 	public void advance(){
 		if(canAdvance()){
 			currStage=currStage+1;
-			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero);
+			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,getGlobalPedometer, getGlobalVelocityUpdater);
 		}
 		else{
 			

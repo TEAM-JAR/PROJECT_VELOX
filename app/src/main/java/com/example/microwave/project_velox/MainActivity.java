@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
         textView = (TextView) findViewById(R.id.stepsCount_text);
         initializePedometer();
         initializeHandler();
+        initializeHero();
     }
 
     private void initializePedometer() {
@@ -64,6 +65,10 @@ public class MainActivity extends Activity {
                 updateHandler.postDelayed(this, 100);
             }
         }, 100);
+    }
+
+    public void initializeHero(){
+        Hero hero= new Hero(1);
     }
 
     public Handler mHandler = new Handler() {
