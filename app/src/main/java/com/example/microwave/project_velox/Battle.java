@@ -1,10 +1,11 @@
-package com.example.microwave.project_velox;
+
 public class Battle {
 	private Enemy[] enemies;
 	private Hero hero;
 	
-	Battle (int n){
+	Battle (int n, Hero hero){
 		Character[] enemies=new Enemy[n];
+		this.hero=hero;
 	}
 	
 	public void spawnEnemy(int difficulty){

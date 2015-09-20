@@ -1,4 +1,4 @@
-package com.example.microwave.project_velox;
+
 public class Item {
 	private int hp;
 	private int rcv;

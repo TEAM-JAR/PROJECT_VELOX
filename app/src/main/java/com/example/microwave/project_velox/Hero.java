@@ -1,15 +1,18 @@
-package com.example.microwave.project_velox;
+
 public class Hero extends Character{
 	
-
-
+	private int level;
+	private int rank;
+	private int exp;
+	private int rankExp;
 	private Item helmet;
 	private Item armor;
 	private Item weapon;
 	private Item sheild;
+	private double topSpeed;
 
 	public Hero(int clas) {
-		double topSpeed = 0;
+		topSpeed=5;
 
 		// tell user to start running and record the top speed within the interval and save that to topSpeed
 
@@ -33,12 +36,45 @@ public class Hero extends Character{
 		}
 	}
 	
+//	public void getTopSpeed(){
+//		//run activity called hero initializer 
+//		// ask to pick class Warrior(1), Mage(2), Thief(3)
+//		// press button to run getTopSpeed then call display stats
+//		topSpeed=phone.getVelocity();
+//	}
+	
 	public void askName(){
 
 	}
 	
+	public void gainRankExp(int i){
+		rankExp=rankExp+1;
+	}
 	
-
+	public void rankUp(){
+		if(rankExp>=Math.pow(rank, 1.1)*10){
+			rank++;
+			rankExp=(int) (rankExp-Math.pow(rank, 1.1)*10);
+		}
+	}
+	public void gainExp(int i){
+		exp=exp+i;
+	}
+	
+	public void levelUp(){
+		if(exp>=Math.pow(level, 1.1)*10){
+			level++;
+			maxHp=(int) (maxHp*.99)+200;
+			maxRcv=(int) (maxRcv*.99)+100;
+			maxAtk=(int) (maxAtk*.99)+200;
+			maxMag=(int) (maxMag*.99)+200;
+			
+			exp=(int) (exp-Math.pow(level, 1.1)*10);
+		}
+	}
+	
+	
+	
 	public int itemsHp(){
 		return helmet.getHp()+armor.getHp()+weapon.getHp()+sheild.getHp();
 	}
@@ -52,6 +88,7 @@ public class Hero extends Character{
 		return helmet.getMag()+armor.getMag()+weapon.getMag()+sheild.getMag();
 	}
 
+	
 	public int totalHp(){
 		return itemsHp()+getMaxHp();
 	}

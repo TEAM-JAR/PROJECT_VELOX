@@ -1,10 +1,10 @@
-package com.example.microwave.project_velox;
+
 public class BattleScript {
 	
 	boolean result;
 	
-	public BattleScript(int difficulty, int numOfEnemies, Pedometer p) {
-		Battle battle=new Battle(numOfEnemies);
+	public BattleScript(int difficulty, int numOfEnemies, Hero hero) {
+		Battle battle=new Battle(numOfEnemies,hero);
 		for(int i=0;i<numOfEnemies;i++){
 			battle.spawnEnemy(difficulty);
 		}
@@ -32,7 +32,7 @@ public class BattleScript {
 			else if(buttonMagic.isPressed()){
 
 				double velocity=0;
-				int stepAt=p.getSensorCount();
+				int stepAt=phone.getSteps(); 
 				
 				long start = System.currentTimeMillis();
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
@@ -43,7 +43,7 @@ public class BattleScript {
 					}
 				}
 				
-				int stepsTaken=p.getSensorCount()-stepAt;
+				int stepsTaken=phone.getSteps()-stepAt; 
 
 				if(velocity>4 && stepsTaken==1){
 					//prompt user to select enemy
@@ -53,7 +53,7 @@ public class BattleScript {
 			}
 			else if(buttonDefend.isPressed()){
 				double velocity=0;
-				int stepAt=p.getSensorCount();
+				int stepAt=phone.getSteps(); 
 		
 				long start = System.currentTimeMillis();
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
@@ -64,15 +64,15 @@ public class BattleScript {
 					}
 				}
 				
-				int stepsTaken=p.getSensorCount()-stepAt;
+				int stepsTaken=phone.getSteps()-stepAt; 
 				
-				if(phone.getVelocity()>0 && stepsTaken==0){
+				if(phone.distanceTravled()==0 && stepsTaken==0){
 					battle.getHero().defend();
 				}
 			}
 			else if(buttonHeal.isPressed()){
 				double velocity=0;
-				int stepAt=p.getSensorCount();
+				int stepAt=phone.getSteps(); 
 				
 				long start = System.currentTimeMillis();
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
@@ -83,7 +83,7 @@ public class BattleScript {
 					}
 				}
 				
-				int stepsTaken=p.getSensorCount()-stepAt;
+				int stepsTaken=phone.getSteps()-stepAt; 
 				
 				if(velocity<.1 && stepsTaken>0){
 					battle.getHero().heal(battle.getHero().getCurrRcv());
