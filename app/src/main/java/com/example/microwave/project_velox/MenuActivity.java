@@ -67,9 +67,9 @@ public class MenuActivity extends Activity {
         _level = (TextView) findViewById(R.id.Level_Text);
         _rank = (TextView) findViewById(R.id.Rank_Text);
 
-        _pacesBar = (ProgressBar) findViewById(R.id.Level_Bar);
+        _pacesBar = (ProgressBar) findViewById(R.id.Paces_Bar);
         _levelBar = (ProgressBar) findViewById(R.id.Level_Bar);
-        _rankBar = (ProgressBar) findViewById(R.id.Level_Bar);
+        _rankBar = (ProgressBar) findViewById(R.id.Rank_Bar);
     }
 
     private void initializeInstanceVars() {
@@ -97,7 +97,6 @@ public class MenuActivity extends Activity {
                 /* do what you need to do */
                 updateInstanceFields();
                 updateUI();
-                System.out.println(lvlXPCap);
                 /* and here comes the "trick" */
                 updateHandler.postDelayed(this, 100);
             }
@@ -121,12 +120,17 @@ public class MenuActivity extends Activity {
 
         this.lvlXP = pacesCounter;
         this.rkXP = pacesCounter;
+
+        if (canLevelUp()) {
+            levelUp();
+        }
+        if (canRankUp()) {
+            rankUp();
+        }
     }
 
     public void updatePacesCounter() {
-        System.out.println("Here's muh counter ui");
         System.out.println(_pacesCounter);
-        System.out.println("Here's muh pedometer");
         System.out.println(pm);
         _pacesCounter.setText("" + pm.getSteps());
     }
@@ -182,7 +186,7 @@ public class MenuActivity extends Activity {
     }
 
     private void toaster(String message) {
-        Helper.toaster(getBaseContext(), message);
+        Helper.toaster(getBaseContext(), message, true);
     }
 
     public void updateUI() {
@@ -205,7 +209,8 @@ public class MenuActivity extends Activity {
     }
 
     public void rkuphit(View view) {
-        rankUp();
+        //rankUp();
+        rkXP++;
     }
 
     public void generateLevelUpToast() {
