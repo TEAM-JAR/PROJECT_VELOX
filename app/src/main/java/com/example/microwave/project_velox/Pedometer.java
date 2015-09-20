@@ -106,4 +106,13 @@ public class Pedometer implements SensorEventListener {
     public boolean isTracking() {
         return isTracking;
     }
+
+    public boolean spendSteps(int amount) {
+        if (steps - amount >= 0) {
+            steps -= amount;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

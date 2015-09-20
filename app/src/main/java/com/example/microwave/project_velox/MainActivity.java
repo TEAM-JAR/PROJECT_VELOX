@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
     }
 
     private void toaster(String message) {
-        Helper.toaster(getBaseContext(), message);
+        Helper.toaster(getBaseContext(), message, true);
     }
 
     public void startClicked(View view) {
