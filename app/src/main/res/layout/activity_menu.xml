@@ -81,7 +81,7 @@
                 android:layout_height="112dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:id="@+id/Muscle_Man"
+                android:id="@+id/Hero"
                 android:src="@drawable/muscleman"
                 android:longClickable="false"
                 android:layout_gravity="left|top"

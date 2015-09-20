@@ -14,42 +14,54 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="381dp">
+            android:layout_height="362dp">
 
             <ImageView
                 android:layout_width="110dp"
                 android:layout_height="158dp"
-                android:id="@+id/imageView"
+                android:id="@+id/Hero"
                 android:layout_gravity="left|center_vertical"
                 android:src="@drawable/muscleman"
-                android:layout_alignTop="@+id/imageView2"
+                android:layout_alignTop="@+id/Enemy_Mid"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Hero_Bar"
+                android:indeterminate="false"
+                android:layout_above="@+id/Hero"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/Hero"
+                android:layout_alignEnd="@+id/Hero" />
 
             <ImageView
                 android:layout_width="142dp"
                 android:layout_height="133dp"
-                android:id="@+id/imageView4"
+                android:id="@+id/Enemy_Bot"
                 android:layout_gravity="right|bottom"
                 android:src="@drawable/enemy_sprite"
-                android:layout_below="@+id/imageView2"
-                android:layout_alignLeft="@+id/imageView2"
-                android:layout_alignStart="@+id/imageView2" />
+                android:layout_below="@+id/Enemy_Mid"
+                android:layout_alignLeft="@+id/Enemy_Mid"
+                android:layout_alignStart="@+id/Enemy_Mid" />
 
             <ImageView
                 android:layout_width="141dp"
                 android:layout_height="132dp"
-                android:id="@+id/imageView2"
+                android:id="@+id/Enemy_Mid"
                 android:layout_gravity="right|top"
                 android:src="@drawable/enemy_sprite"
-                android:layout_below="@+id/imageView3"
+                android:layout_below="@+id/Enemy_Top"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
             <ImageView
                 android:layout_width="141dp"
                 android:layout_height="133dp"
-                android:id="@+id/imageView3"
+                android:id="@+id/Enemy_Top"
                 android:layout_gravity="right|center_vertical"
                 android:src="@drawable/enemy_sprite"
                 android:layout_alignParentTop="true"
@@ -60,49 +72,69 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Escape"
-                android:id="@+id/button5"
+                android:id="@+id/Escape_B"
+                android:onClick="escapeClicked"
                 android:layout_gravity="center"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
             <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:layout_above="@+id/imageView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:max=""/>
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/Mid_Bar"
+                android:indeterminate="false"
+                android:layout_alignTop="@+id/Enemy_Mid"
+                android:layout_alignLeft="@+id/Enemy_Mid"
+                android:layout_alignStart="@+id/Enemy_Mid"
+                android:layout_above="@+id/Enemy_Bot"
+                android:layout_alignRight="@+id/Enemy_Mid"
+                android:layout_alignEnd="@+id/Enemy_Mid"
+                android:layout_marginBottom="114dp" />
 
             <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/Top_Bar"
+                android:indeterminate="false"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignLeft="@+id/Enemy_Top"
+                android:layout_alignStart="@+id/Enemy_Top"
+                android:layout_alignBottom="@+id/Escape_B"
+                android:layout_marginBottom="30dp" />
 
             <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar3"
-                android:layout_alignTop="@+id/imageView2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/BotBar"
+                android:indeterminate="false"
+                android:layout_alignLeft="@+id/Enemy_Bot"
+                android:layout_alignStart="@+id/Enemy_Bot"
+                android:layout_alignBottom="@+id/Hero"
+                android:layout_below="@+id/Enemy_Mid"
+                android:progress="0" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar4"
-                android:layout_alignTop="@+id/imageView4"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
         </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="26dp">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/Action_Bar"
+                android:max="100"
+                android:indeterminate="false"
+                android:progress="0" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -126,34 +158,38 @@
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
                             android:text="Attack"
-                            android:id="@+id/button2"
+                            android:id="@+id/Attack_B"
+                            android:onClick="attackClicked"
                             android:layout_gravity="center_horizontal" />
 
                         <Button
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
                             android:text="Magic"
-                            android:id="@+id/button"
+                            android:id="@+id/Magic_B"
+                            android:onClick="magicClicked"
                             android:layout_gravity="center_horizontal" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="65dp">
 
                         <Button
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
                             android:text="Defend"
-                            android:id="@+id/button3"
+                            android:id="@+id/Defend_B"
+                            android:onClick="defendClicked"
                             android:layout_gravity="center_horizontal" />
 
                         <Button
                             android:layout_width="176dp"
                             android:layout_height="wrap_content"
                             android:text="Heal"
-                            android:id="@+id/button4" />
+                            android:onClick="healClicked"
+                            android:id="@+id/Heal_B" />
 
                     </LinearLayout>
                 </LinearLayout>
