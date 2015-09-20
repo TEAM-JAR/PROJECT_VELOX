@@ -46,6 +46,12 @@ public class VelocityUpdater extends Activity implements GoogleApiClient.Connect
 
     //builds client
     protected synchronized void buildGoogleApiClient(){
+        System.out.println("2" + new GoogleApiClient.Builder(this));
+        System.out.println("3" + new GoogleApiClient.Builder(this).addConnectionCallbacks(this));
+        System.out.println("4" + new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this));
+        System.out.println("5" + new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API));
+        System.out.println("fuckyou" + new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build());
+
         client = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)

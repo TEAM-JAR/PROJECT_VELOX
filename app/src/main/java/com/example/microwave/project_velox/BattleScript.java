@@ -10,9 +10,11 @@ public class BattleScript {
 	BattleAction battleAction;
 	ProgressBar pb;
 	
-	public BattleScript(int difficulty, int numOfEnemies, Hero hero,Pedometer p,VelocityUpdater v, ProgressBar pb) {
+	public BattleScript(int difficulty, int numOfEnemies, Hero hero,Pedometer p,ProgressBar pb) {
 		Battle battle=new Battle(numOfEnemies,hero);
 		battleAction = BattleAction.STANDBY;
+		VelocityUpdater v = new VelocityUpdater();
+		v.start();
 
 		for(int i=0;i<numOfEnemies;i++) {
 			battle.spawnEnemy(difficulty);
@@ -24,7 +26,8 @@ public class BattleScript {
 			 * Fight
 			 */
 			if(battleAction.equals(BattleAction.ATTACK)) {
-				double velocity=0;
+				double velocity =0.0;
+
 				
 				long start = System.currentTimeMillis();
 				long end = start + 3*1000; // 3 seconds * 1000 ms/sec
@@ -38,12 +41,11 @@ public class BattleScript {
 					}
 				}
 
-				if (velocity>7){
+				if (velocity>4){
 					//Later integrate user selection of enemy
 					battle.getHero().attack(battle.getEnemy((int)( Math.random()*3)+ 1));
 				}
 
-				resetBattleAction();
 			}
 
 			/**
@@ -72,8 +74,6 @@ public class BattleScript {
 					//Later integrate user selection of enemy
 					battle.getHero().attack(battle.getEnemy((int) (Math.random() * 3 )+ 1));
 				}
-
-				resetBattleAction();
 			}
 
 			/**
@@ -100,8 +100,6 @@ public class BattleScript {
 				if(v.getVelocity()<3 && stepsTaken==0){
 					battle.getHero().defend();
 				}
-
-				resetBattleAction();
 			}
 
 			/**
@@ -128,8 +126,6 @@ public class BattleScript {
 				if(velocity<.1 && stepsTaken>0){
 					battle.getHero().heal(battle.getHero().getCurrRcv());
 				}
-
-				resetBattleAction();
 			} else if (battleAction.equals(BattleAction.ESCAPE)) {
 				result = false;
 			}  else  {

@@ -28,7 +28,9 @@ public class Pedometer implements SensorEventListener {
 
     public Pedometer() {
         steps = 0;
+    }
 
+    public void intermediatePedometer(Context context) {
         mSensorManager = (SensorManager)
                 context.getSystemService(Context.SENSOR_SERVICE);
         mStepCounterSensor = mSensorManager

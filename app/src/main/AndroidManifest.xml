@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.microwave.project_velox" >
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <uses-feature
         android:name="@string/step_detector"
         android:required="false" />
@@ -14,15 +14,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu" >
@@ -35,8 +27,12 @@
         <activity
             android:name=".BattleActivity"
             android:label="@string/title_activity_battle" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+            </intent-filter>
         </activity>
-        <application android:name="MyApplication"/>
     </application>
 
 </manifest>

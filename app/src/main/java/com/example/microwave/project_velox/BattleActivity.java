@@ -1,5 +1,6 @@
 package com.example.microwave.project_velox;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-public class BattleActivity extends AppCompatActivity {
+public class BattleActivity extends Activity {
 
     private BattleScript bs;
 
@@ -16,16 +17,17 @@ public class BattleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
-        Dungeon first = new Dungeon(1,1,((MyApplication) this.getApplication()).getHero(),
-                ((MyApplication) this.getApplication()).getPedometer(),((MyApplication) this.getApplication()).getVU(), (ProgressBar) findViewById(R.id.Action_Bar));
+        Global.pm.setContext(getApplicationContext());
+        Dungeon first = new Dungeon(1,1,Global.hero,
+                Global.pm , (ProgressBar) findViewById(R.id.Action_Bar));
         first.start();
 
-        Intent activityChangeIntent = new Intent(BattleActivity.this, MenuActivity.class);
+        //Intent activityChangeIntent = new Intent(BattleActivity.this, MenuActivity.class);
 
         // currentContext.startActivity(activityChangeIntent);
         bs = first.newBattle;
 
-        startActivity(activityChangeIntent);
+       // startActivity(activityChangeIntent);
     }
 
     public void attackClicked(View view) {

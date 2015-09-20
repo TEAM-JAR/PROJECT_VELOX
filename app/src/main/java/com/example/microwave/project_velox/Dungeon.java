@@ -13,7 +13,7 @@ public class Dungeon {
 	
 	public BattleScript newBattle;
 
-	public Dungeon(int difficulty, int numStages, Hero hero, Pedometer p, VelocityUpdater vu, ProgressBar pb){
+	public Dungeon(int difficulty, int numStages, Hero hero, Pedometer p, ProgressBar pb){
 		this.difficulty=difficulty;
 		this.numStages=numStages;
 		this.hero=hero;
@@ -32,7 +32,7 @@ public class Dungeon {
 
 	public void start(){
 		currStage=1;
-		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu, pb);
+		newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, pb);
 	}
 
 	public void next(){
@@ -47,7 +47,7 @@ public class Dungeon {
 	public void advance(){
 		if(canAdvance()){
 			currStage=currStage+1;
-			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, vu, pb);
+			newBattle = new BattleScript(difficulty,(int)(Math.random()*3)+1,hero,p, pb);
 		}
 		else{
 			

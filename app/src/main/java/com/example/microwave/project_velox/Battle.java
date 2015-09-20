@@ -3,8 +3,8 @@ public class Battle {
 	private Enemy[] enemies;
 	private Hero hero;
 	
-	Battle (int n, Hero hero){
-		Character[] enemies=new Enemy[n];
+	public Battle (int n, Hero hero){
+		this.enemies = new Enemy[n];
 		this.hero=hero;
 	}
 	

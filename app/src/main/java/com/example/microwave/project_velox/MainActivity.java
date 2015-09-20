@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
     }
 
     private void initializePedometer() {
-        pm = ((MyApplication) this.getApplication()).getPedometer();
+        pm = new Pedometer(getApplicationContext());
         pm.stop();
         start = (Button) findViewById(R.id.start);
         stop = (Button) findViewById(R.id.stop);
