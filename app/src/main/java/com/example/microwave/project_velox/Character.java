@@ -1,3 +1,4 @@
+package com.example.microwave.project_velox;
 
 public class Character {
 	private String name;
