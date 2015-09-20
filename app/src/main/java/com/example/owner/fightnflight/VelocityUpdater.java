@@ -54,7 +54,7 @@ public class VelocityUpdater extends Activity implements GoogleApiClient.Connect
         client.connect();
     }
 
-    //edits decimal length
+    //edit decimal length
     public void setDecimalClipper() {
         df.setRoundingMode(RoundingMode.DOWN);
     }
