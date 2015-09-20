@@ -82,6 +82,7 @@ public class MenuActivity extends Activity {
 
     private void initializeInstanceVars() {
         pm = Global.pm;
+        this.pm.setContext(getApplicationContext());
         pm.resume();
 
         this.pacesCounter = 0;
