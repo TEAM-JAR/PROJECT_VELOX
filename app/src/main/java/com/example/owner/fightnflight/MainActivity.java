@@ -10,13 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.getpebble.android.kit.PebbleKit;
+import com.getpebble.android.kit.util.PebbleDictionary;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.UUID;
 
 
 public class MainActivity extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -30,7 +34,11 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
     private int i =0; //counter for array
     private double velocity= 0.0; //velocity
     private DecimalFormat df = new DecimalFormat("##.##");//formats decimal
-
+    private final static UUID APP_UUID = UUID.fromString("EC7EE5C6-8DDF-4089-AA84-C3396A11CC95");
+    private static final int DATA_KEY = 0;
+    private static final int SELECT_BUTTON_KEY=0;
+    private static final int UP_BUTTON_KEY=1;
+    private static final int DOWN_BUTTON_KEY=2;
 
 
     @Override
@@ -43,8 +51,27 @@ public class MainActivity extends ActionBarActivity implements GoogleApiClient.C
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(1 * 100)        // .1 seconds, in milliseconds
                 .setFastestInterval(1 * 100); // .1 second, in milliseconds
+        PebbleKit.startAppOnPebble(getApplicationContext(), APP_UUID);
+        sendStringToPebble("Hello World");
 
+    }
 
+    private void sendStringToPebble(String message){
+
+        boolean isConnected = PebbleKit.isWatchConnected(this);
+        Toast.makeText(this, "Pebble " + (isConnected ? "is" : "is not") + " connected!", Toast.LENGTH_LONG).show();
+        PebbleDictionary dictionary = new PebbleDictionary();
+        dictionary.addString(DATA_KEY, message);
+        PebbleKit.sendDataToPebble(getApplicationContext(), APP_UUID, dictionary);
+
+        }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        boolean isConnected = PebbleKit.isWatchConnected(this);
+        Toast.makeText(this, "Pebble " + (isConnected ? "is" : "is not") + " connected!", Toast.LENGTH_LONG).show();
     }
 
     //builds client
