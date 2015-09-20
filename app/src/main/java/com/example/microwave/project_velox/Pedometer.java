@@ -26,6 +26,17 @@ public class Pedometer implements SensorEventListener {
 
     private Sensor mStepDetectorSensor;
 
+    public Pedometer() {
+        steps = 0;
+
+        mSensorManager = (SensorManager)
+                context.getSystemService(Context.SENSOR_SERVICE);
+        mStepCounterSensor = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mStepDetectorSensor = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    }
+
     /**
      * Needs context to get system services
      */
@@ -38,6 +49,10 @@ public class Pedometer implements SensorEventListener {
                 .getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         mStepDetectorSensor = mSensorManager
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
 

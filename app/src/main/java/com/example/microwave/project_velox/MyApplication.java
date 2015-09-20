@@ -6,7 +6,7 @@ import android.widget.Button;
 /**
  * Created by jonathanwu on 9/20/15.
  */
-public class MyApplication extends Application{
+public class MyApplication extends Application {
     private Pedometer p;
     private VelocityUpdater v;
     private Hero hero;

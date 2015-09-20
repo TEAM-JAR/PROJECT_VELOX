@@ -36,6 +36,7 @@
             android:name=".BattleActivity"
             android:label="@string/title_activity_battle" >
         </activity>
+        <application android:name="MyApplication"/>
     </application>
 
 </manifest>

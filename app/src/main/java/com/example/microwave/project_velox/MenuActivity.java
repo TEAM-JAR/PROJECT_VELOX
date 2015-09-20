@@ -81,7 +81,7 @@ public class MenuActivity extends Activity {
     }
 
     private void initializeInstanceVars() {
-        pm = ((MyApplication) this.getApplication()).getPedometer();
+        pm = Global.pm;
         pm.resume();
 
         this.pacesCounter = 0;
