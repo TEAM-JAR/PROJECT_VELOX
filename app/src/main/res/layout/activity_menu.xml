@@ -10,25 +10,30 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="167dp">
 
-            <android.support.v4.widget.CircleImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/view"
-                android:layout_gravity="center" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Paces"
+                android:id="@+id/Paces_Text"
+                android:layout_gravity="center_horizontal|top"
+                android:textSize="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="0"
-                android:id="@+id/textView2"
+                android:text="-1"
+                android:id="@+id/Paces_Counter"
                 android:layout_gravity="center"
                 android:backgroundTint="#919191"
                 android:textSize="120dp"
@@ -38,20 +43,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Paces"
-                android:id="@+id/textView4"
-                android:layout_gravity="center_horizontal|top"
-                android:textSize="30dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="/50"
-                android:id="@+id/textView5"
-                android:layout_gravity="center_vertical|right"
-                android:textSize="60dp" />
+                android:text="/XX"
+                android:id="@+id/Total_Paces_Limit"
+                android:layout_gravity="right|bottom"
+                android:textSize="35dp"
+                android:textColor="#9b9b9b" />
+
         </FrameLayout>
 
         <FrameLayout
@@ -64,7 +62,7 @@
                 android:layout_height="112dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:id="@+id/imageView"
+                android:id="@+id/Muscle_Man"
                 android:src="@drawable/muscleman"
                 android:longClickable="false"
                 android:layout_gravity="left|top"
@@ -88,29 +86,31 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Level 0"
+                        android:text="Level -1"
                         android:id="@+id/textView3" />
 
                     <ProgressBar
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/progressBar"
-                        android:layout_weight="0.37" />
+                        android:id="@+id/Level_Bar"
+                        android:layout_weight="0.37"
+                        android:indeterminate="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Rank 0"
-                        android:id="@+id/textView" />
+                        android:text="Rank -1"
+                        android:id="@+id/Rank_Text" />
 
                     <ProgressBar
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/progressBar3"
-                        android:layout_weight="0.33" />
+                        android:id="@+id/Rank_Bar"
+                        android:layout_weight="0.33"
+                        android:indeterminate="false" />
 
                 </LinearLayout>
 
