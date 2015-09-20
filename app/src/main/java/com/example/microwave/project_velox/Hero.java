@@ -1,10 +1,15 @@
 package com.example.microwave.project_velox;
 public class Hero extends Character{
-	
+
 	private int level;
 	private int rank;
 	private int exp;
 	private int rankExp;
+
+	private int paceCapacity;
+	private int reqExp;
+	private int reqRankExp;
+
 	private Item helmet;
 	private Item armor;
 	private Item weapon;
@@ -35,22 +40,22 @@ public class Hero extends Character{
 			maxMag=(int) (Math.random()*(topSpeed/4)*5+50);
 		}
 	}
-	
+
 //	public void getTopSpeed(){
 //		//run activity called hero initializer 
 //		// ask to pick class Warrior(1), Mage(2), Thief(3)
 //		// press button to run getTopSpeed then call display stats
 //		topSpeed=phone.getVelocity();
 //	}
-	
+
 	public void askName(){
 
 	}
-	
+
 	public void gainRankExp(int i){
 		rankExp=rankExp+1;
 	}
-	
+
 	public void rankUp(){
 		if(rankExp>=Math.pow(rank, 1.1)*10){
 			rank++;
@@ -60,7 +65,7 @@ public class Hero extends Character{
 	public void gainExp(int i){
 		exp=exp+i;
 	}
-	
+
 	public void levelUp(){
 		if(exp>=Math.pow(level, 1.1)*10){
 			level++;
@@ -68,13 +73,13 @@ public class Hero extends Character{
 			maxRcv=(int) (maxRcv*.99)+100;
 			maxAtk=(int) (maxAtk*.99)+200;
 			maxMag=(int) (maxMag*.99)+200;
-			
+
 			exp=(int) (exp-Math.pow(level, 1.1)*10);
 		}
 	}
-	
-	
-	
+
+
+
 	public int itemsHp(){
 		return helmet.getHp()+armor.getHp()+weapon.getHp()+sheild.getHp();
 	}
@@ -85,10 +90,19 @@ public class Hero extends Character{
 		return helmet.getAtk()+armor.getAtk()+weapon.getAtk()+sheild.getAtk();
 	}
 	public int itemsMag(){
-		return helmet.getMag()+armor.getMag()+weapon.getMag()+sheild.getMag();
+		return helmet.getMag()+ armor.getMag()+weapon.getMag()+sheild.getMag();
 	}
 
-	
+	public int getPaceCapacity(){
+		return (int) Math.pow(rank, 1.3)*rank+10;
+	}
+	public int getReqExp(){
+		return (int) Math.pow(level, 1.1)*10;
+	}
+	public int getReqRankExp(){
+		return (int) Math.pow(rank, 1.1)*10;
+	}
+
 	public int totalHp(){
 		return itemsHp()+getMaxHp();
 	}
@@ -101,5 +115,5 @@ public class Hero extends Character{
 	public int totalMag(){
 		return itemsMag()+getMaxMag();
 	}
-	
+
 }
